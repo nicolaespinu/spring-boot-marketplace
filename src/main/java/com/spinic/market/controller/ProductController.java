@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> editProductById(Authentication a, @PathVariable(value = "id") Long productId,
+    public ResponseEntity<Product> editProduct(Authentication a, @PathVariable(value = "id") Long productId,
                                                    @RequestBody Product productForUpdate) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new NoSuchElementException("Product not found for this ID:= " + productId));
@@ -43,7 +43,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public Map<String, Boolean> deleteProductById(Authentication a, @PathVariable(value = "id") Long productId) {
+    public Map<String, Boolean> deleteProduct(Authentication a, @PathVariable(value = "id") Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new NoSuchElementException("Product not found for this ID:= " + productId));
         Map<String, Boolean> mapResponse = new HashMap<>();
@@ -57,7 +57,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> viewProductById(@PathVariable(value = "id") Long productId) {
+    public ResponseEntity<Product> viewProduct(@PathVariable(value = "id") Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new NoSuchElementException("Product not found for this ID:= " + productId));
         return ResponseEntity.ok().body(product);
