@@ -5,7 +5,6 @@ import com.spinic.market.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("/market/users")
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserRepository userRepository;
 
     @GetMapping("/all")
@@ -32,8 +32,8 @@ public class UserController {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("User not found for this ID" + userId));
         userRepository.delete(user);
-        Map<String, Boolean> resoponseMap = new HashMap<>();
-        resoponseMap.put("Deleted", Boolean.TRUE);
-        return resoponseMap;
+        Map<String, Boolean> responseMap = new HashMap<>();
+        responseMap.put("Deleted", Boolean.TRUE);
+        return responseMap;
     }
 }

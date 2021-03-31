@@ -9,14 +9,16 @@ public class Product {
     private String title;
     private String description;
     private double price;
+    private String owner;
 
     public Product() {
     }
 
-    public Product(String title, String description, double price) {
+    public Product(String title, String description, double price, String owner) {
         this.title = title;
         this.description = description;
         this.price = price;
+        this.owner = owner;
     }
 
     @Id
@@ -51,6 +53,14 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     @Override
